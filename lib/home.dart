@@ -1,62 +1,72 @@
 import 'package:flutter/material.dart';
-import 'package:multiscreen_qoute_app/model.dart';
 
+import 'model.dart';
 
 class Home extends StatelessWidget {
   List<Quote> quote = [
     Quote(
-      quote: "Believe you can and you're halfway there.",
-      author: "Theodore Roosevelt.",
+      quote: "East or west , Lena is the best",
+      author: "Lenaa ",
     ),
     Quote(
-      quote: "The only thing we have to fear is fear itself.",
-      author: " Franklin D. Roosevelt",
+      quote: "if you are bad, I'm your dad",
+      author: "Lena kasmin ",
     ),
     Quote(
-      quote:
-      "Ask not what your country can do for you, ask what you can do for your country.",
-      author: " - John F. Kennedy",
+      quote: "Uff charge aay",
+      author: "Lena jasmin ",
     ),
-    Quote(quote: "Be the change that you wish to see in the world.",
-        author: "- Mahatma Gandhi")
+    Quote(
+      quote: "I'm the best",
+      author: "jasmin",
+
+
+    ),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.black,
-        foregroundColor: Colors.white,
-        title: Text("Quote and Author", style: TextStyle(color: Colors.blue)
-        )
-        ,
-      )
-      ,
-      body
-          :
-      ListView
-          .
-      builder
-        (
-          itemCount
-              :
-          quote
-              .
-          length
-          ,
-          itemBuilder
-              :
-              (
-              context
-              ,
-              index
-              ){return GestureDetector(onTap: (){Navigator.pushNamed(arguments: quote[index],context, "Details");},
-            child: Card(child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(children: [Text(quote[index].quote),SizedBox(height: 20,),
-                Card(child:Column(children: [Text(quote[index].author),SizedBox(height: 20,)],) ,)],),
-            ),),
-          );}),
+        backgroundColor: Colors.white,
+        foregroundColor: Colors.black,
+        title: Text(
+          'QUOTES & AUTHORS',
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
+        ),
+        titleTextStyle: TextStyle(color: Colors.black),
+      ),
+      body: ListView.builder(
+        itemCount: quote.length,
+        itemBuilder: (context, index) {
+          return GestureDetector(onTap: (){
+            Navigator.pushNamed(arguments: quote[index],context, "details");
+          },
+            child: Card(
+              color: Colors.black,
+              child: Column(
+                children: [
+                  Align(
+                    child: Text(
+                      quote[index].quote,
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    alignment: Alignment.centerLeft,
+                  ),
+                  SizedBox(height: 20, width: 30),
+                  Align(
+                    child: Text(
+                      quote[index].author,
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    alignment: Alignment.bottomRight,
+                  ),
+                ],
+              ),
+            ),
+          );
+        },
+      ),
     );
   }
 }
